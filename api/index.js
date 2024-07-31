@@ -10,7 +10,7 @@ import userRoute from "./routes/user.route.js";
 // CONFIG DOTENV
 dotenv.config();
 // __DIRNAME
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 // * CONECT TO DATABASE
 mongoose
   .connect(
