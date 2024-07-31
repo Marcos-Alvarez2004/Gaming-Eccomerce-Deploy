@@ -6,6 +6,7 @@ import path from "path";
 import cookieParser from "cookie-parser";
 // * IMPORT ROUTES
 import authRoute from "./routes/auth.route.js";
+import userRoute from "./routes/user.route.js";
 // CONFIG DOTENV
 dotenv.config();
 // __DIRNAME
@@ -27,6 +28,7 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, "/client/dist")));
 // *** ROUTES
 app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
 // APP GET
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
