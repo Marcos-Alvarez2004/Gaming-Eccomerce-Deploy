@@ -96,16 +96,19 @@ export default function Profile() {
 
   const handleDeleteUser = async () => {
     try {
-      dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: "DELETE",
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(deleteUserFailure(data.message));
-        return;
+      const isDeleteAccount = confirm("¿Deseas borrar la cuenta?");
+      if (isDeleteAccount) {
+        dispatch(deleteUserStart());
+        const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+          method: "DELETE",
+        });
+        const data = await res.json();
+        if (data.success === false) {
+          dispatch(deleteUserFailure(data.message));
+          return;
+        }
+        dispatch(deleteUserSuccess(data));
       }
-      dispatch(deleteUserSuccess(data));
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
     }
@@ -113,7 +116,7 @@ export default function Profile() {
 
   const handleSignOut = async () => {
     try {
-      const isSignOut = confirm("Seguro que quieres cerrar sesion?");
+      const isSignOut = confirm("¿Seguro que quieres cerrar sesion?");
       if (isSignOut) {
         dispatch(signOutUserStart());
         const res = await fetch("/api/auth/signout");
