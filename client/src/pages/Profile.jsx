@@ -113,14 +113,17 @@ export default function Profile() {
 
   const handleSignOut = async () => {
     try {
-      dispatch(signOutUserStart());
-      const res = await fetch("/api/auth/signout");
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(deleteUserFailure(data.message));
-        return;
+      const isSignOut = confirm("Seguro que quieres cerrar sesion?");
+      if (isSignOut) {
+        dispatch(signOutUserStart());
+        const res = await fetch("/api/auth/signout");
+        const data = await res.json();
+        if (data.success === false) {
+          dispatch(deleteUserFailure(data.message));
+          return;
+        }
+        dispatch(deleteUserSuccess(data));
       }
-      dispatch(deleteUserSuccess(data));
     } catch (error) {
       dispatch(deleteUserFailure(data.message));
     }
@@ -162,7 +165,9 @@ export default function Profile() {
   };
   return (
     <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
+      <h1 className="text-3xl font-semibold text-center my-7">
+        Perfil del usuario
+      </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -175,17 +180,19 @@ export default function Profile() {
           onClick={() => fileRef.current.click()}
           src={formData.avatar || currentUser.avatar}
           alt="profile"
-          className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2"
+          className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2 border border-green-600"
         />
         <p className="text-sm self-center">
           {fileUploadError ? (
             <span className="text-red-700">
-              Error Image upload (image must be less than 2 mb)
+              Error al cargar imagen (la imagen debe tener menos de 2mb)
             </span>
           ) : filePerc > 0 && filePerc < 100 ? (
-            <span className="text-slate-700">{`Uploading ${filePerc}%`}</span>
+            <span className="text-slate-600">{`Cargando ${filePerc}%`}</span>
           ) : filePerc === 100 ? (
-            <span className="text-green-700">Image successfully uploaded!</span>
+            <span className="text-green-400">
+              Imagen cargada correctamente!
+            </span>
           ) : (
             ""
           )}
@@ -195,7 +202,7 @@ export default function Profile() {
           placeholder="username"
           defaultValue={currentUser.username}
           id="username"
-          className="border p-3 rounded-lg"
+          className="p-3 rounded-lg bg-white/10"
           onChange={handleChange}
         />
         <input
@@ -203,7 +210,7 @@ export default function Profile() {
           placeholder="email"
           id="email"
           defaultValue={currentUser.email}
-          className="border p-3 rounded-lg"
+          className="p-3 rounded-lg bg-white/10"
           onChange={handleChange}
         />
         <input
@@ -211,19 +218,16 @@ export default function Profile() {
           placeholder="password"
           onChange={handleChange}
           id="password"
-          className="border p-3 rounded-lg"
+          className="p-3 rounded-lg bg-white/10"
         />
-        <button
-          disabled={loading}
-          className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
-        >
-          {loading ? "Loading..." : "Update"}
+        <button className="bg-blue-600 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80">
+          {loading ? "Cargando..." : "Modificar perfil"}
         </button>
         <Link
-          className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
+          className="bg-green-600 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
           to={"/create-listing"}
         >
-          Create Listing
+          Crear nuevo anuncio
         </Link>
       </form>
       <div className="flex justify-between mt-5">
@@ -231,18 +235,17 @@ export default function Profile() {
           onClick={handleDeleteUser}
           className="text-red-700 cursor-pointer"
         >
-          Delete account
+          Borrar cuenta
         </span>
         <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
-          Sign out
+          Cerrar sesion
         </span>
       </div>
 
-      <p className="text-red-700 mt-5">{error ? error : ""}</p>
-      <p className="text-green-700 mt-5">
-        {updateSuccess ? "User is updated successfully!" : ""}
+      <p className="text-green-700 mt-5 text-center">
+        {updateSuccess ? "Perfil actualizado correctamente!" : ""}
       </p>
-      <button onClick={handleShowListings} className="text-green-700 w-full">
+      {/* <button onClick={handleShowListings} className="text-green-700 w-full">
         Show Listings
       </button>
       <p className="text-red-700 mt-5">
@@ -287,7 +290,7 @@ export default function Profile() {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 }
