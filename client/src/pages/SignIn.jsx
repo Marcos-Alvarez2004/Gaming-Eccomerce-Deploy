@@ -6,6 +6,9 @@ import {
   signInSuccess,
   signInFailure,
 } from "../redux/user/userSlice";
+// REACT-TOASTIFY
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -18,6 +21,7 @@ export default function SignIn() {
       [e.target.id]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -32,6 +36,7 @@ export default function SignIn() {
       const data = await res.json();
       if (data.success === false) {
         dispatch(signInFailure(data.message));
+        toast.error(error);
         return;
       }
       dispatch(signInSuccess(data));
@@ -77,7 +82,18 @@ export default function SignIn() {
           <span className="text-green-500 hover:underline">Registrar</span>
         </Link>
       </div>
-      {error && <p className="text-red-500 mt-5">{error}</p>}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }
