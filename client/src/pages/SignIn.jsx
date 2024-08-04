@@ -53,7 +53,7 @@ export default function SignIn() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           className="p-3 rounded-lg bg-white/10"
           id="email"
           required
@@ -61,7 +61,7 @@ export default function SignIn() {
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Contraseña"
           className="p-3 rounded-lg bg-white/10"
           id="password"
           minLength="4"

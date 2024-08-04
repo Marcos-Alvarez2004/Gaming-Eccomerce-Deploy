@@ -202,7 +202,7 @@ export default function Profile() {
         </p>
         <input
           type="text"
-          placeholder="username"
+          placeholder="Nombre de usuario nuevo"
           defaultValue={currentUser.username}
           id="username"
           className="p-3 rounded-lg bg-white/10"
@@ -210,7 +210,7 @@ export default function Profile() {
         />
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email de cuenta nuevo"
           id="email"
           defaultValue={currentUser.email}
           className="p-3 rounded-lg bg-white/10"
@@ -218,7 +218,7 @@ export default function Profile() {
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Contraseña nueva"
           onChange={handleChange}
           id="password"
           className="p-3 rounded-lg bg-white/10"
