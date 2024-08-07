@@ -10,3 +10,31 @@ body {
 :focus {
   border: blue;
 }
+
+.swiper-pagination-bullet {
+  background-color: #16a34a;
+  width: 15px;
+  height: 15px;
+}
+
+.swiper-pagination {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  width: auto;
+  margin-top: 27px;
+  padding: 0.3rem 0;
+  justify-content: center;
+}
+
+@media screen and (width > 640px) {
+  .swiper-pagination {
+    border-radius: 0.5rem;
+  }
+}
+
+@media (width > 639px) and (width < 930px) {
+  .swiper-pagination {
+    gap: 0.5rem;
+  }
+}
