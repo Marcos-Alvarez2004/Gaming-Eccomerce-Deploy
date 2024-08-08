@@ -7,6 +7,10 @@ body {
   background-color: #000;
 }
 
+option {
+  background-color: #1a1a1a;
+}
+
 :focus {
   border: blue;
 }
