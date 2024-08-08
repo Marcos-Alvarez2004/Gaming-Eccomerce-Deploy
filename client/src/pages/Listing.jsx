@@ -14,8 +14,9 @@ export default function Listing() {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [contact, setContact] = useState(false);
   const params = useParams();
-  // const { currentUser } = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
 
   const pagination = {
     clickable: true,
@@ -52,25 +53,51 @@ export default function Listing() {
           <h1 className="text-center font-bold mt-7 text-2xl p-2 break-all">
             {listing.name}
           </h1>
-          <div className="mt-7">
+          <span className="flex justify-center items-center mt-7 text-xl text-green-400">
+            $ {listing.price.toLocaleString("es-AR")} ARG
+          </span>
+          <div className="mt-7 bg-white/10">
             <Swiper
-              className="sm:w-1/4 w-full h-full"
+              className="sm:w-1/3 w-full h-full"
               modules={[Pagination]}
               pagination={pagination}
               grabCursor
             >
               {listing.imageUrls.map((url) => (
-                <SwiperSlide key={url} className="w-full h-[330px] bg-white">
+                <SwiperSlide
+                  key={url}
+                  className="w-full h-[330px] bg-white mt-8"
+                >
                   <img
                     src={url}
-                    className="h-full w-full select-none bg-white"
+                    className="h-full w-full select-none bg-white border-b-2"
                     alt="imagen de la publicación"
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
-            <section>{listing.name}</section>
+            <section className="flex flex-col justify-center items-center">
+              <p className="capitalize font-semibold text-green-400">
+                {" "}
+                <span className="">categoria: </span>
+                {listing.category}
+              </p>
+              <p className="break-all p-4 text-gray-400 text-sm sm:w-2/5">
+                <span className="text-base text-white">Descripción: </span>
+                {listing.description}
+              </p>
+            </section>
           </div>
+          {currentUser && listing.userRef !== currentUser._id && !contact && (
+            <div className="flex justify-center items-center my-7">
+              <button
+                onClick={() => setContact(true)}
+                className="bg-green-600 text-xl  rounded-lg uppercase hover:opacity-95 p-3"
+              >
+                Contactar con el vendedor
+              </button>
+            </div>
+          )}
         </>
       )}
     </main>

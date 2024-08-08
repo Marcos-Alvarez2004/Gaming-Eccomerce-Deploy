@@ -117,7 +117,7 @@ export default function CreateListing() {
     e.preventDefault();
     try {
       if (formData.imageUrls.length < 1)
-        return setError("You must upload at least one image");
+        return setError("Debes subir al menos 1 imagen");
       setLoading(true);
       setError(false);
       const res = await fetch("/api/listing/create", {
@@ -317,7 +317,7 @@ export default function CreateListing() {
         >
           {loading ? "Cargando..." : "Crear publicación"}
         </button>
-        {error && <p className="text-red-700 text-sm">{error}</p>}
+        {error && <p className="text-red-700 text-sm text-center">{error}</p>}
       </form>
     </main>
   );
