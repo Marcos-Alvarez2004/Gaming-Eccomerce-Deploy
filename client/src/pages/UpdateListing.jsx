@@ -242,7 +242,7 @@ export default function UpdateListing() {
               <input
                 type="number"
                 placeholder="Precio min $1000 ARG"
-                className="bg-transparent outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="bg-transparent w-1/2 outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 id="price"
                 required
                 min="1000"
@@ -261,6 +261,8 @@ export default function UpdateListing() {
               placeholder="Descripcion de la publicación"
               className="w-full p-3 rounded-lg bg-white/10 min-h-14 max-h-80"
               id="description"
+              maxLength="1500"
+              minLength="20"
               required
               onChange={handleChangue}
               value={formData.description}
@@ -329,7 +331,7 @@ export default function UpdateListing() {
           disabled={loading || uploading}
           className="p-3 w-full sm:w-1/2 mx-auto bg-green-600 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Cargando..." : "Crear publicación"}
+          {loading ? "Cargando..." : "Confirmar cambios"}
         </button>
         {error && <p className="text-red-700 text-sm">{error}</p>}
       </form>
