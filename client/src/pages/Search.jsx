@@ -101,8 +101,8 @@ export default function Search() {
     setListings([...listings, ...data]);
   };
   return (
-    <div className="flex flex-col md:flex-row">
-      <div className="p-7 md:min-h-screen border-r-2 border-white/10">
+    <div className="flex flex-col">
+      <div className="p-7 border-b-2 border-white/10 sm:border-r-2 sm:border-white/10">
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <div className="flex items-center justify-center gap-2">
             <label className="whitespace-nowrap text-xl font-semibold">
@@ -112,14 +112,14 @@ export default function Search() {
               type="text"
               id="searchTerm"
               placeholder="Ejemplo: Mouse gaming..."
-              className="p-3 rounded-lg bg-white/10 w-1/2"
+              className="p-3 rounded-lg bg-white/10 w-1/2 sm:w-1/3"
               value={sidebardata.searchTerm}
               onChange={handleChange}
             />
           </div>
-          <div className="flex gap-2 flex-wrap items-center justify-center">
+          <div className="flex gap-2  items-center justify-center">
             <label className="font-semibold text-xl">Categoria:</label>
-            <article className="bg-white/10 w-1/2 p-2 flex flex-wrap gap-4 rounded-lg">
+            <article className="bg-white/10 w-1/2 p-2 flex flex-wrap sm:justify-between gap-2 rounded-lg sm:w-1/3">
               <div className="flex gap-x-1 w-auto items-center">
                 <input
                   type="checkbox"
@@ -189,7 +189,7 @@ export default function Search() {
               onChange={handleChange}
               defaultValue={"created_at_desc"}
               id="sort_order"
-              className="rounded-lg p-3 bg-white/10"
+              className="rounded-lg p-3 bg-white/10 text-center sm:w-1/3"
             >
               <option className="mt-10" value="regularPrice_desc">
                 Precio alto a bajo
@@ -199,18 +199,18 @@ export default function Search() {
               <option value="createdAt_asc">Más viejo</option>
             </select>
           </div>
-          <button className="bg-green-600 text-white p-3 rounded-lg uppercase hover:opacity-95">
+          <button className="bg-green-600 p-3 rounded-lg uppercase hover:opacity-95 sm:w-1/3 sm:mx-auto">
             Buscar
           </button>
         </form>
       </div>
       <div className="flex-1">
-        <h1 className="text-3xl font-semibold p-3 text-gray-400 mt-5">
+        <h1 className="text-3xl text-center sm:text-left font-semibold p-3 text-gray-400 mt-5">
           Resultados de busqueda:
         </h1>
         <div className="p-7 flex flex-wrap gap-4">
           {!loading && listings.length === 0 && (
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-400 text-center">
               Ninguna publicación fue encontrada!
             </p>
           )}
