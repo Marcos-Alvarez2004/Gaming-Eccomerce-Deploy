@@ -26,7 +26,7 @@ export default function About() {
         de sistema de usuario con multiples funciones. Todo esta guardado en una
         base de datos en la nube, la tecnologia utilizada para frontend en React
         Js y para backend Node Js. Puedes contactar conmigo por medio de mis
-        redes sociales
+        redes sociales.
       </p>
       <div className="flex justify-between items-center gap-8">
         <a href="https://www.linkedin.com/in/marcosalvarezmedero?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
