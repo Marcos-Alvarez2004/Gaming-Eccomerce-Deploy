@@ -77,7 +77,6 @@ export default function Header() {
               ></div>
             </div>
           </div>
-
           {isOpen && (
             <nav className="absolute md:hidden flex flex-col gap-y-2 py-2 items-center right-0 top-[54px] bg-black rounded-br rounded-bl border border-green-600 select-none">
               <Link to="/" className="inline-block p-1">
@@ -93,26 +92,28 @@ export default function Header() {
               </Link>
             </nav>
           )}
-
           <Link to="/" className="hidden md:inline hover:underline">
             <li>Inicio</li>
           </Link>
           <Link to="/about" className="hidden md:inline hover:underline">
             <li>Sobre Nostros</li>
           </Link>
-          <Link to="/profile" className="hidden md:inline">
+
+          <div className="hidden md:inline">
             {currentUser ? (
-              <img
-                className="rounded-full h-7 w-7 object-cover"
-                src={currentUser.avatar}
-                alt="profile"
-              />
+              <Link to="/profile">
+                <img
+                  className="rounded-full h-7 w-7 object-cover"
+                  src={currentUser.avatar}
+                  alt="profile"
+                />
+              </Link>
             ) : (
               <Link to="/sign-in">
                 <li className=" text-green-500 hover:underline"> Sign in</li>
               </Link>
             )}
-          </Link>
+          </div>
         </ul>
       </div>
     </header>
