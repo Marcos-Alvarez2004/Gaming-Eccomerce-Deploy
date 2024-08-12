@@ -61,7 +61,10 @@ export default function MyListings() {
       {userListings && userListings.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-7">
           {userListings.map((listing) => (
-            <article className="bg-white/10 mb-4 w-full rounded-lg">
+            <article
+              key={listing._id}
+              className="bg-white/10 mb-4 w-full rounded-lg"
+            >
               <div key={listing._id}>
                 <Link to={`/listing/${listing._id}`}>
                   <img
@@ -70,15 +73,14 @@ export default function MyListings() {
                     className="bg-white rounded-tr-lg rounded-tl-lg h-[200px] w-full"
                   />
                 </Link>
-                <Link to={`/listing/${listing._id}`}>
-                  <h3 className="break-all font-semibold text-center p-2 h-16">
-                    <Link to={`/listing/${listing._id}`}>
-                      <span className="hover:underline cursor-pointer">
-                        {listing.name}
-                      </span>
-                    </Link>
-                  </h3>
-                </Link>
+
+                <h3 className="break-all font-semibold text-center p-2 h-16">
+                  <Link to={`/listing/${listing._id}`}>
+                    <span className="hover:underline cursor-pointer">
+                      {listing.name}
+                    </span>
+                  </Link>
+                </h3>
               </div>
 
               <section className="flex justify-between px-4">
