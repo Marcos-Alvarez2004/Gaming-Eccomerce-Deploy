@@ -12,6 +12,7 @@ import Profile from "./pages/Profile";
 import CreateListing from "./pages/CreateListing";
 import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
+import MyListings from "./pages/MyListings";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
               path="/update-listing/:listingId"
               element={<UpdateListing />}
             />
+            <Route path="/my-listings" element={<MyListings />} />
           </Route>
         </Routes>
       </BrowserRouter>
