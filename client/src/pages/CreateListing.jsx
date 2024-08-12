@@ -181,13 +181,13 @@ export default function CreateListing() {
               formData.imageUrls.map((url, index) => (
                 <div
                   key={url}
-                  className="flex sm:w-[49%] bg-white/10 justify-between p-2 sm:p-3 rounded"
+                  className="flex w-full h-[220px] sm:w-[49%] bg-white/10 justify-between p-2 sm:p-3 rounded"
                 >
-                  <div className="w-1/2 sm:w-1/3">
+                  <div className="w-1/2">
                     <img
                       src={url}
                       alt="listing image"
-                      className="w-full h-full bg-white object-contain rounded"
+                      className="w-full h-full bg-white rounded"
                     />
                   </div>
                   <button
