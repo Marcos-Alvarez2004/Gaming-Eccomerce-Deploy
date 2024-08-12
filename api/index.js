@@ -14,9 +14,7 @@ dotenv.config();
 const __dirname = path.resolve();
 // * CONECT TO DATABASE
 mongoose
-  .connect(
-    "mongodb+srv://marcos:fasdfhaufgaisuo2312@general.wugamgm.mongodb.net/?retryWrites=true&w=majority&appName=General"
-  )
+  .connect(process.env.MONGO_URI)
   .then(console.log("Connected to MongoDB!"))
   .catch((err) => {
     console.log(err);
