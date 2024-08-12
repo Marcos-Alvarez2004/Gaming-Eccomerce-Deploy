@@ -58,6 +58,7 @@ export default function SignIn() {
           id="email"
           required
           onChange={handleChange}
+          autoComplete="username"
         />
         <input
           type="password"
@@ -67,6 +68,7 @@ export default function SignIn() {
           minLength="4"
           required
           onChange={handleChange}
+          autoComplete="current-password"
         />
 
         <button

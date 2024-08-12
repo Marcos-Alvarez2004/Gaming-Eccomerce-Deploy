@@ -55,6 +55,7 @@ export default function SignUp() {
           id="username"
           onChange={handleChange}
           required
+          autoComplete="username"
         />
         <input
           type="email"
@@ -63,6 +64,7 @@ export default function SignUp() {
           id="email"
           onChange={handleChange}
           required
+          autoComplete="username"
         />
         <input
           type="password"
@@ -72,6 +74,7 @@ export default function SignUp() {
           onChange={handleChange}
           minLength="4"
           required
+          autoComplete="current-password"
         />
 
         <button

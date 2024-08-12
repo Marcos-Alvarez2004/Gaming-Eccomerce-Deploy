@@ -207,6 +207,7 @@ export default function Profile() {
           id="username"
           className="p-3 rounded-lg bg-white/10"
           onChange={handleChange}
+          autoComplete="username"
         />
         <input
           type="email"
@@ -215,6 +216,7 @@ export default function Profile() {
           defaultValue={currentUser.email}
           className="p-3 rounded-lg bg-white/10"
           onChange={handleChange}
+          autoComplete="username"
         />
         <input
           type="password"
@@ -222,6 +224,7 @@ export default function Profile() {
           onChange={handleChange}
           id="password"
           className="p-3 rounded-lg bg-white/10"
+          autoComplete="current-password"
         />
         <button className="bg-blue-600 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80">
           {loading ? "Cargando..." : "Modificar perfil"}
