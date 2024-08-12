@@ -79,7 +79,7 @@ export default function Header() {
           </div>
 
           {isOpen && (
-            <nav className="absolute md:hidden flex flex-col gap-y-2 py-2 items-center right-0 top-[54px] bg-white/10 rounded-br rounded-bl border-b border-green-600 border-l border-r select-none">
+            <nav className="absolute md:hidden flex flex-col gap-y-2 py-2 items-center right-0 top-[54px] bg-black rounded-br rounded-bl border border-green-600 select-none">
               <Link to="/" className="inline-block p-1">
                 Inicio
               </Link>
