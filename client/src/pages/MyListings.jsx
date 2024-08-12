@@ -58,7 +58,7 @@ export default function MyListings() {
           ? "Error al mostrar sus publicaciones, intentlo más tarde"
           : ""}
       </p>
-      {userListings && userListings.length > 0 && (
+      {userListings && userListings.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-7">
           {userListings.map((listing) => (
             <article
@@ -100,6 +100,10 @@ export default function MyListings() {
             </article>
           ))}
         </div>
+      ) : (
+        <p className="text-center text-gray-500">
+          No has creado ninguna publicación!
+        </p>
       )}
     </div>
   );
