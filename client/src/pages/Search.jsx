@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import ListingItem from "../components/ListingItemSearch";
+import ListingItemSearch from "../components/ListingItemSearch";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -204,11 +204,11 @@ export default function Search() {
           </button>
         </form>
       </div>
-      <div className="flex-1">
-        <h1 className="text-3xl text-center sm:text-left font-semibold p-3 text-gray-400 mt-5">
+      <div className="flex-1 p-7">
+        <h1 className="text-3xl text-center sm:text-left font-semibold py-3 text-gray-400 mt-5">
           Resultados de busqueda:
         </h1>
-        <div className="p-7 flex flex-wrap gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 ">
           {!loading && listings.length === 0 && (
             <p className="text-xl text-gray-400 text-center">
               Ninguna publicación fue encontrada!
@@ -223,7 +223,7 @@ export default function Search() {
           {!loading &&
             listings &&
             listings.map((listing) => (
-              <ListingItem key={listing._id} listing={listing} />
+              <ListingItemSearch key={listing._id} listing={listing} />
             ))}
 
           {showMore && (
