@@ -11,7 +11,7 @@ import listingRoute from "./routes/listing.route.js";
 // CONFIG DOTENV
 dotenv.config();
 // __DIRNAME
-// const __dirname = path.resolve();
+const __dirname = path.resolve();
 // * CONECT TO DATABASE
 mongoose
   .connect(
@@ -26,15 +26,15 @@ const app = express();
 // APP USE
 app.use(express.json());
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, "/client/dist")));
+app.use(express.static(path.join(__dirname, "/client/dist")));
 // *** ROUTES
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/listing", listingRoute);
 // APP GET
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 // ! HANDLE ERROR
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
