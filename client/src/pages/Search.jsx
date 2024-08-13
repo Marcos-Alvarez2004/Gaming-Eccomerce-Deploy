@@ -191,10 +191,10 @@ export default function Search() {
               id="sort_order"
               className="rounded-lg p-3 bg-white/10 text-center sm:w-1/3"
             >
-              <option className="mt-10" value="regularPrice_desc">
+              <option className="mt-10" value="price_desc">
                 Precio alto a bajo
               </option>
-              <option value="regularPrice_asc">Precio bajo a alto</option>
+              <option value="price_asc">Precio bajo a alto</option>
               <option value="createdAt_desc">Más nuevo</option>
               <option value="createdAt_asc">Más viejo</option>
             </select>
