@@ -7,6 +7,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Contact from "../components/Contact";
 
 // https://sabe.io/blog/javascript-format-numbers-commas#:~:text=The%20best%20way%20to%20format,format%20the%20number%20with%20commas.
 
@@ -92,12 +93,13 @@ export default function Listing() {
             <div className="flex justify-center items-center my-7">
               <button
                 onClick={() => setContact(true)}
-                className="bg-green-600 text-xl  rounded-lg uppercase hover:opacity-95 p-3"
+                className="bg-green-600 text-xl rounded-lg uppercase hover:opacity-95 p-3"
               >
                 Contactar con el vendedor
               </button>
             </div>
           )}
+          {contact && <Contact listing={listing} />}
         </>
       )}
     </main>
